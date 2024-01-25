@@ -4,6 +4,7 @@ import { ClerkProvider } from '@clerk/nextjs'
 // eslint-disable-next-line
 import {Inter, Space_Grotesk} from 'next/font/google'
 import type { Metadata } from 'next'
+import ThemeProvider from '@/context/ThemeProvider'
 
 export const metadat : Metadata ={
   title: 'Dev-Overflow',
@@ -42,11 +43,13 @@ export default function RootLayout({
         }
       }}
     >
-      <html lang="en">
-        <body className={`${inter.variable} ${spaceGrotesk.variable}`}>
-          {children}
-        </body>
-      </html>
+      <ThemeProvider>
+        <html lang="en">
+          <body className={`${inter.variable} ${spaceGrotesk.variable}`}>
+            {children}
+          </body>
+        </html>
+      </ThemeProvider>
     </ClerkProvider>
   )
 }
