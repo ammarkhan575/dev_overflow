@@ -4,6 +4,39 @@ import LocalSearchBar from "@/components/shared/search/LocalSearchBar";
 import Filter from "@/components/shared/filter/Filter";
 import { HomePageFilters } from "@/constants/filter";
 import HomeFilter from "@/components/home/HomeFilter";
+import NoResult from "@/components/shared/NoResult/NoResult";
+import QuestionCard from "@/components/cards/QuestionCard";
+
+const questions = [
+  {
+    _id: '1',
+    title: "How to access all the elements from SQL database ?",
+    tags: [
+      {
+        _id: '1',
+        name: "pyhton",
+      },
+      {
+        _id: '2',
+        name: "mySql",
+      },
+      {
+        _id: '3',
+        name: "Database",
+      },
+    ],
+    author: {
+      _id: "1",
+      name: 'John Doe',
+      picture: 'john-doe.jpg'
+    },
+    upvotes: 101,
+    views: 111,
+    answers: [],
+    createdAt: new Date('2021-09-23T12:00:35.000Z'),
+  },
+];
+
 export default function Home() {
   return (
     <>
@@ -30,6 +63,31 @@ export default function Home() {
         />
       </div>
       <HomeFilter />
+      <div className="mt-10 flex flex-col gap-6">
+        {questions.length > 0 ? (
+          questions.map((question) => (<QuestionCard
+            key={question._id}
+            _id={question._id}
+            title={question.title}
+            tags={question.tags}
+            author={question.author}
+            upvotes={question.upvotes}
+            views={question.views}
+            answers={question.answers}
+            createdAt={question.createdAt}
+          />
+          )))
+            : 
+          (
+          <NoResult
+            title="There is no quesiton to show"
+            description="Be the first to break the silence! 🚀 Ask a Question and kickstart the discussion. our query could be the next big thing others learn from. Get involved! 💡"
+            link="/ask-question"
+            linkTitle="Ask a Question"
+          />
+        )
+      }
+      </div>
     </>
   );
 }

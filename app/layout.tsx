@@ -6,7 +6,7 @@ import {Inter, Space_Grotesk} from 'next/font/google'
 import type { Metadata } from 'next'
 import ThemeProvider from '@/context/ThemeProvider'
 
-export const metadat : Metadata ={
+export const metadata : Metadata ={
   title: 'Dev-Overflow',
   description: 'A platform where you can Get help and share knowlege with others, and updated with latest technology (Web Development, Mobile Development, Game Development, etc)',
   icons: '/assets/images/site-logo.png'
